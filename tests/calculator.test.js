@@ -1,4 +1,4 @@
-import calculator from '../src/calculator.js';
+import calculator from '../src/calculator';
 
 test('add', () => {
   expect(calculator.add(1, 2)).toBe(3);
