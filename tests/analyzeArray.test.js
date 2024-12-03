@@ -1,6 +1,6 @@
 import analyzeArray from '../src/analyzeArray';
 
-test('analyze array', () => {
+it('analyzes an array', () => {
   expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({
     average: 4,
     min: 1,
@@ -9,7 +9,7 @@ test('analyze array', () => {
   });
 });
 
-test('analyze negative array', () => {
+it('analyzes an array with negative numbers', () => {
   expect(analyzeArray([-1, -8, -3, -4, -2, -6])).toEqual({
     average: -4,
     min: -8,
@@ -18,7 +18,7 @@ test('analyze negative array', () => {
   });
 });
 
-test('analyze array with one element', () => {
+it('analyzes an array with one element', () => {
   expect(analyzeArray([1])).toEqual({
     average: 1,
     min: 1,
@@ -27,14 +27,18 @@ test('analyze array with one element', () => {
   });
 });
 
-test('non-array argument', () => {
-  expect(() => analyzeArray(1)).toThrow(/Invalid argument/);
+it('throws at an input that is not an array', () => {
+  expect(() => analyzeArray(1)).toThrow(/Invalid argument - must be array/);
 });
 
-test('invalid array', () => {
-  expect(() => analyzeArray(['a'])).toThrow(/Invalid argument/);
+it('throws at an array with non-number elements', () => {
+  expect(() => analyzeArray(['a'])).toThrow(
+    /Invalid argument - must be array of numbers/
+  );
 });
 
-test('analyze empty array', () => {
-  expect(() => analyzeArray([]).toThrow(/Invalid argument/));
+it('throws at an empty array', () => {
+  expect(() =>
+    analyzeArray([]).toThrow(/Invalid argument - must be non-empty array/)
+  );
 });

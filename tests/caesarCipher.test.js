@@ -1,53 +1,53 @@
 import caesarCipher from '../src/caesarCipher';
 
-test('basic caesar cipher', () => {
+it('ciphers', () => {
   expect(caesarCipher('hello', 3)).toBe('khoor');
 });
 
-test('zero shift', () => {
+it('does nothing with zero shift', () => {
   expect(caesarCipher('hello', 0)).toBe('hello');
 });
 
-test('negative shift', () => {
+it('ciphers with negative shift', () => {
   expect(caesarCipher('hello', -3)).toBe('ebiil');
 });
 
-test('large shift', () => {
+it('ciphers with a large shift', () => {
   expect(caesarCipher('hello', 75)).toBe('ebiil');
 });
 
-test('large negative shift', () => {
+it('ciphers with a large negative shift', () => {
   expect(caesarCipher('hello', -75)).toBe('khoor');
 });
 
-test('invalid shift', () => {
+it('throws at an invalid shift', () => {
   expect(() => {
     caesarCipher('hello', 'a');
-  }).toThrow(/Invalid argument/);
+  }).toThrow(/Invalid argument - shift must be number/);
 });
 
-test('invalid string', () => {
+it('throws at an invalid input string', () => {
   expect(() => {
     caesarCipher(123, 3);
-  }).toThrow(/Invalid argument/);
+  }).toThrow(/Invalid argument - str must be string/);
 });
 
-test('empty string', () => {
+it('handles an empty string', () => {
   expect(caesarCipher('', 3)).toBe('');
 });
 
-test('single character', () => {
+it('ciphers a single character', () => {
   expect(caesarCipher('a', 3)).toBe('d');
 });
 
-test('keep case', () => {
+it('preserves case', () => {
   expect(caesarCipher('Aa', 3)).toBe('Dd');
 });
 
-test('wrap around', () => {
+it('ciphers when wrapping around the alphabet', () => {
   expect(caesarCipher('z', 3)).toBe('c');
 });
 
-test('non-alpha characters', () => {
+it('does not change non-alphabetic characters', () => {
   expect(caesarCipher('hello, there!1234', 3)).toBe('khoor, wkhuh!1234');
 });

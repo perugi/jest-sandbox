@@ -1,62 +1,78 @@
 import calculator from '../src/calculator';
 
-test('add', () => {
+it('adds', () => {
   expect(calculator.add(1, 2)).toBe(3);
 });
 
-test('add negative', () => {
+it('adds floating numbers', () => {
+  expect(calculator.add(1.1, 2.2)).toBeCloseTo(3.3);
+});
+
+it('adds negative numbers', () => {
   expect(calculator.add(1, -2)).toBe(-1);
 });
 
-test('add invalid', () => {
+it('throws when adding with invalid arguments', () => {
   expect(() => {
     calculator.add(1, 'a');
   }).toThrow(/Invalid arguments/);
 });
 
-test('subtract', () => {
+it('subtracts', () => {
   expect(calculator.subtract(1, 2)).toBe(-1);
 });
 
-test('subtract negative', () => {
-  expect(calculator.subtract(1, -2)).toBe(3);
+it('subtracts negative numbers', () => {
+  expect(calculator.subtract(-1, -2)).toBe(1);
 });
 
-test('subtract invalid', () => {
+it('subtracts floating numbers', () => {
+  expect(calculator.subtract(2.0, 1.0)).toBeCloseTo(1.0);
+});
+
+it('throws when subtracting with invalid arguments', () => {
   expect(() => {
     calculator.subtract('a', 1);
   }).toThrow(/Invalid arguments/);
 });
 
-test('multiply', () => {
+it('multiplies', () => {
   expect(calculator.multiply(1, 2)).toBe(2);
 });
 
-test('multiply negative', () => {
+it('multiplies negative', () => {
   expect(calculator.multiply(-1, 2)).toBe(-2);
 });
 
-test('multiply invalid', () => {
+it('multiplies floating numbers', () => {
+  expect(calculator.multiply(2.0, 1.0)).toBeCloseTo(2.0);
+});
+
+it('throws when multiplying with invalid arguments', () => {
   expect(() => {
     calculator.multiply('a', 1);
   }).toThrow(/Invalid arguments/);
 });
 
-test('divide', () => {
+it('divides', () => {
   expect(calculator.divide(1, 2)).toBe(0.5);
 });
 
-test('divide negative', () => {
+it('divides negative', () => {
   expect(calculator.divide(-1, 2)).toBe(-0.5);
 });
 
-test('divide invalid', () => {
+it('throws when dividing with invalid arguments', () => {
   expect(() => {
     calculator.divide('a', 1);
   }).toThrow(/Invalid arguments/);
 });
 
-test('divide by zero', () => {
+it('divides floating numbers', () => {
+  expect(calculator.divide(2.0, 2.0)).toBeCloseTo(1.0);
+});
+
+it('throws when dividing by zero', () => {
   expect(() => {
     calculator.divide(1, 0);
   }).toThrow(/Division by zero/);

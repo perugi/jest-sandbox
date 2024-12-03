@@ -1,17 +1,17 @@
 import capitalize from '../src/capitalize';
 
-test('basic capitalization', () => {
+it('capitalizes a string', () => {
   expect(capitalize('hello')).toBe('Hello');
 });
 
-test('empty string', () => {
+it('handles an empty string', () => {
   expect(capitalize('')).toBe('');
 });
 
-test('single character', () => {
+it('handles a single character', () => {
   expect(capitalize('a')).toBe('A');
 });
 
-test('multiple words', () => {
+it('capitalizes first word only', () => {
   expect(capitalize('hello world')).toBe('Hello world');
 });
